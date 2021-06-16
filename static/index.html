@@ -30,22 +30,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <router-link  class="nav-link active" to="/korisnici">Korisnici</router-link>
-                        <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/proizvodi">Proizvodi</router-link>
-                        <!-- <a class="nav-link" href="#">Link</a> -->
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/korpa">U Korpi</router-link>
-                        <!-- <a class="nav-link" href="#">Link</a> -->
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Opcije
+                            Administrator
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li> <li><router-link class="dropdown-item" to="/">Prijava</router-link></li></li>
@@ -56,6 +44,26 @@
                             <li><router-link class="dropdown-item" to="/kupci">Dodaj novog korisnika</router-link></li>
                             <hr class="dropdown-divider">
                             <li><router-link class="dropdown-item" to="/proizvodInstanca">Dodaj novi proizvod</router-link></li>
+                            <hr class="dropdown-divider">
+                            <li><router-link class="dropdown-item" to="/proizvodi">Proizvodi</router-link></li>
+                            <hr class="dropdown-divider">
+                            <li><router-link class="dropdown-item" to="/korisnici">Korisnici</router-link></li>
+                            <hr class="dropdown-divider">
+                            <li><router-link class="dropdown-item" to="/korpa">U Korpi</router-link></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Kupac
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li> <li><router-link class="dropdown-item" to="/">Prijava</router-link></li></li>
+                            <li><router-link class="dropdown-item" to="/logout">Odjava</router-link></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><router-link class="dropdown-item" to="/proizvodiPI">Proizvodi za kupca</router-link></li>
                             <hr class="dropdown-divider">
                         </ul>
                     </li>

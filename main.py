@@ -22,7 +22,7 @@ def login():
     cursor.execute("SELECT * FROM korisnik WHERE korisnicko_ime=%(korisnicko_ime)s AND tip_id=%(tip_id)s", flask.request.json)
     korisnik = cursor.fetchone()
     if korisnik is not None:
-        session["korisnik"] = korisnik["tip_id"]
+        session["korisnik"] = korisnik["korisnicko_ime"]
         return "", 200
     return "", 403
 

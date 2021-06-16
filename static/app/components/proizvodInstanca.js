@@ -17,14 +17,14 @@ export default {
         refreshProizvodi() {
             axios.get("api/proizvodi").then((response) => {
                 this.proizvodi = response.data;
+            }, _ =>{
+                this.ulogovan=true;
             });
         },
         create(proizvod) {
             axios.post("api/proizvodi", proizvod).then((response) => {
                 this.$router.push("/proizvodi");
                 this.refresh();
-            }, _ =>{
-                this.ulogovan=true;
             });
         }
     },
