@@ -41,8 +41,6 @@ export default {
             
             });
             
-        }else {
-            this.neuspesanLogin=true
         }
     }
         
