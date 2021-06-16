@@ -1,7 +1,12 @@
 export default {
     template: `
     <div class="alert alert-danger" role="alert" v-if="neuspesanLogin">
-  Neuspesna prijava na sistem! Pokusajte ponovo
+    Prijava neuspesna! Pokusaliste da se prijavite kao Administrator
+    <p>Pokusajte ponovo</p>
+</div>
+<div class="alert alert-danger" role="alert" v-if="neuspesanLoginKupac">
+Prijava neuspesna! Pokusaliste da se prijavite kao Kupac
+<p>Pokusajte ponovo</p>
 </div>
     <form v-on:submit.prevent="login()">
   <div class="mb-3">
@@ -24,7 +29,8 @@ export default {
                 "korisnicko_ime": "",
                 "tip_id": ""
             },
-            neuspesanLogin:false
+            neuspesanLogin:false,
+            neuspesanLoginKupac:false
         };
     },
     methods: {
@@ -34,11 +40,15 @@ export default {
                 axios.post(`api/login`, this.korisnik).then((response) => {
                 this.$router.push("/korisnici");
             
+            }, _ =>{
+                this.neuspesanLogin=true;
             });
         } else if(this.korisnik.tip_id == "2"){
             axios.post(`api/login`, this.korisnik).then((response) => {
-                this.$router.push("/proizvodi");
+                this.$router.push("/proizvodiP");
             
+            }, _ =>{
+                this.neuspesanLoginKupac=true;
             });
             
         }
