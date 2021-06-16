@@ -1,5 +1,8 @@
 export default {
     template: `
+    <div class="alert alert-danger" role="alert" v-if="ulogovan">
+    <b>Morate biti ulogovani kao Administrator</b>
+</div>
 <div>
     <korisnik-forma v-on:sacuvaj="create" v-bind:tekst="'Dodaj'"></korisnik-forma>
 </div>
@@ -8,6 +11,7 @@ export default {
         return {
             korisnici: [],
             korisnikZaIzmenu: {},
+            ulogovan:false
         }
     },
     methods: {
@@ -23,6 +27,8 @@ export default {
             axios.post("api/korisnici", korisnik).then((response) => {
                 this.$router.push("/korisnici");
                 this.refreshkorisnici();
+            }, _ =>{
+                this.ulogovan=true;
             });
         },
         update(korisnik) {

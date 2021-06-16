@@ -1,11 +1,11 @@
 export default {
     template: `
     <div class="alert alert-danger" role="alert" v-if="neuspesanLogin">
-    Prijava neuspesna! Pokusaliste da se prijavite kao Administrator
+    Prijava neuspesna! Pokusali ste da se prijavite kao Administrator
     <p>Pokusajte ponovo</p>
 </div>
 <div class="alert alert-danger" role="alert" v-if="neuspesanLoginKupac">
-Prijava neuspesna! Pokusaliste da se prijavite kao Kupac
+Prijava neuspesna! Pokusali ste da se prijavite kao Kupac
 <p>Pokusajte ponovo</p>
 </div>
     <form v-on:submit.prevent="login()">
@@ -45,7 +45,7 @@ Prijava neuspesna! Pokusaliste da se prijavite kao Kupac
             });
         } else if(this.korisnik.tip_id == "2"){
             axios.post(`api/login`, this.korisnik).then((response) => {
-                this.$router.push("/proizvodiP");
+                this.$router.push("/proizvodiPI");
             
             }, _ =>{
                 this.neuspesanLoginKupac=true;

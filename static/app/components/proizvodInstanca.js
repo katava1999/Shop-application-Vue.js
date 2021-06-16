@@ -1,5 +1,8 @@
 export default {
     template: `
+    <div class="alert alert-danger" role="alert" v-if="ulogovan">
+    <b>Morate biti prijavljeni kao Administrator</b>
+</div>
 <div>
     <nov-proizvod v-on:sacuvaj="create" v-bind:tekst="'Dodaj'"></nov-proizvod>
 </div>
@@ -7,6 +10,7 @@ export default {
     data() {
         return {
             proizvodi: [],
+            ulogovan:false
         }
     },
     methods: {
@@ -19,6 +23,8 @@ export default {
             axios.post("api/proizvodi", proizvod).then((response) => {
                 this.$router.push("/proizvodi");
                 this.refresh();
+            }, _ =>{
+                this.ulogovan=true;
             });
         }
     },
