@@ -183,3 +183,4 @@ def ukloni_korpu(korpa_id):
     return ""
 
 #TIP
+#NOVI TIP
