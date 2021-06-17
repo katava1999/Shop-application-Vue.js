@@ -12,6 +12,7 @@ export default {
         return {
             proizvodiK: [],
             ulogovan: false,
+            korisnici:[]
 
 
         }
@@ -23,9 +24,18 @@ export default {
             }, _ =>{
                 this.ulogovan=true;
             });
+        },
+        refreshK() {
+            axios.get("api/korisnici").then((response) => {
+                this.korisnici = response.data;
+            }, _ =>{
+                
+                this.ulogovan=true;
+            });
         }
     },
     created() {
         this.refreshProizvodiK();
+        this.refreshK();
     }
 }
