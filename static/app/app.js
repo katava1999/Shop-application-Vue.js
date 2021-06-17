@@ -16,6 +16,8 @@ import Korpa from './components/korpa.js';
 import IzmenaKorpe from './components/izmenaKorpe.js';
 import proizvodZaKupca from './components/proizvodZaKupca.js';
 import proizvodZaKupcaInstanca from './components/proizvodZaKupcaInstanca.js';
+import dodajUKorpu from './components/dodajUKorpu.js';
+import korpaInstanca from './components/korpaInstanca.js';
 
 const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
@@ -34,6 +36,9 @@ const router = VueRouter.createRouter({
         {path: "/korpa/:id", component: IzmenaKorpe},
         {path: "/proizvodiP", component: proizvodZaKupca},
         {path: "/proizvodiPI", component: proizvodZaKupcaInstanca},
+        {path: "/dodajKorpu", component: dodajUKorpu},
+        {path: "/dodajKorpuInstanca", component: korpaInstanca},
+
 
     ], 
 });
@@ -47,5 +52,6 @@ app.component('tabela-korpe', TabelaKorpa);
 app.component('korpa-korpa', Korpa);
 app.component('prikaz-p', proizvodZaKupca);
 app.component('prikaz-proizvoda', proizvodZaKupcaInstanca);
+app.component('dodaj-korpu', dodajUKorpu);
 app.use(router);
 app.mount("#app");

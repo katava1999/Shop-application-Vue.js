@@ -1,5 +1,6 @@
 export default {
     props: ["proizvodiK"],
+    emits: ["sacuvajU"],
     data() {
         return {}
     },
@@ -11,7 +12,7 @@ export default {
     <li class="list-group-item" >{{proizvod.opis}}</li>
     <li class="list-group-item" >{{proizvod.cena}}</li>
     <li class="list-group-item" >{{proizvod.dostupno}}</li>
-    <button type="submit" class="btn btn-primary">Dodaj u korpu</button>
+    <button type="submit" class="btn btn-primary" v-on:click="$emit('sacuvajU')">Dodaj u korpu</button>
 </ul>
     `
 }

@@ -5,14 +5,13 @@ export default {
 </div>
 <div>
     <h1>Proizvodi Za kupca</h1>
-    <prikaz-p v-bind:proizvodiK="proizvodiK" v-on:dostupnoR="provera"></prikaz-p>
+    <prikaz-p v-bind:proizvodiK="proizvodiK" v-on:izmena="setZaIzmenu"></prikaz-p>
 </div>
     `,
     data() {
         return {
             proizvodiK: [],
             ulogovan: false,
-            korisnici:[]
 
 
         }
@@ -25,17 +24,11 @@ export default {
                 this.ulogovan=true;
             });
         },
-        refreshK() {
-            axios.get("api/korisnici").then((response) => {
-                this.korisnici = response.data;
-            }, _ =>{
-                
-                this.ulogovan=true;
-            });
+        setZaIzmenu(proizvod) {
+            this.$router.push(`/proizvodi/${proizvod.id}`);
         }
     },
     created() {
         this.refreshProizvodiK();
-        this.refreshK();
     }
 }
