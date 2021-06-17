@@ -1,41 +1,46 @@
 export default {
-    props: ["korpa", "korisnici", "proizvodi", "tekst"],
-    emits: ["sacuvajU"],
+    template: `
+<form v-on:submit.prevent="updateP">
+    <div class="mb-3">
+    <label class="form-label">ID korisnika:</label>
+    <input type="number" class="form-control" v-model="korpe.korisnik_id" required>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">ID proizvoda</label>
+    <input type="number" class="form-control" v-model="korpe.proizvod_id" requreid>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Kolicina</label>
+    <input type="number" class="form-control" v-model="korpe.kolicina" requreid>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Datum</label>
+    <input type="datetime-local" class="form-control" v-model="korpe.datum" requreid>
+    </div>
+    <div class="mb-3">
+    <input class="btn btn-primary" type="submit" value="Dodaj"> 
+    </div>
+</form>
+    `,
     data() {
         return {
-            novaKorpa: this.korpa ? {...this.korpa} : {}
+            korpe: {},
         }
     },
-    watch: {
-        korpa: function(newValue, oldValue) {
-             this.novaKorpa = {...this.korpa};
-         }
+    methods: {
+        refresh() {
+            axios.get(`api/korpa/${this.$route.params['id']}`).then((response) => {
+                this.korpe = response.data;
+            });
+        },
+        create(korpa) {
+            axios.post("api/korpa", korpa).then((response) => {
+                this.$router.push("/korpa");
+                this.refreshK();
+            });
+        }
     },
-    template: `
-    <form v-on:submit.prevent="$emit('sacuvaj', {...novaKorpa})">
-        <div>
-            <label>Korisnik_id:
-                <select v-model="novaKorpa.korisnik_id" required>
-                    <option v-for="korisnik in korisnici" v-bind:value="korisnik.id">{{korisnik.id}} | {{korisnik.korisnicko_ime}}</option>
-                </select>
-            </label>
-        </div>
-        <div>
-            <label>Proizvodi:
-                <select v-model="novaKorpa.proizvod_id" required>
-                    <option v-for="proizvod in proizvodi" v-bind:value="proizvod.id">{{proizvod.id}} | {{proizvod.id}} | {{proizvod.naziv}}</option>
-                </select>
-            </label>
-        </div>
-        <div>
-            <label>Datum: <input type="datetime-local" v-model="novaKorpa.datum" required></label>
-        </div>
-        <div>
-            <label>Kolicina: <input type="number" v-model="novaKorpa.kolicina" required></label>
-        </div>
-        <div>
-            <input type="submit" v-bind:value="tekst">
-        </div>
-    </form>
-    `
+    created() {
+        this.refresh();
+    }
 }

@@ -23,9 +23,6 @@ export default {
             }, _ =>{
                 this.ulogovan=true;
             });
-        },
-        setZaIzmenu(proizvod) {
-            this.$router.push(`/proizvodi/${proizvod.id}`);
         }
     },
     created() {

@@ -10,7 +10,6 @@ export default {
     data() {
         return {
             korisnici: [],
-            korisnikZaIzmenu: {},
             ulogovan:false
         }
     },
