@@ -27,6 +27,12 @@ export default {
 </tbody>
 </table>
 <table class="table table-striped">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Naziv uloge</th>
+    </tr>
+</thead>
 <tbody>
     <tr v-for="tip in tipovi">
         <td>{{tip.id}}</td>
