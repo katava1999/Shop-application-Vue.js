@@ -7,7 +7,7 @@ export default {
     </div>
     <div class="mb-3">
     <label class="form-label">Lozinka</label>
-    <input type="password" class="form-control" v-model="korisnik.lozinku" requreid>
+    <input type="text" class="form-control" v-model="korisnik.lozinku" requreid>
     </div>
     <div class="mb-3">
     <label class="form-label">Tip:</label>

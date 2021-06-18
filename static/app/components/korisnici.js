@@ -5,17 +5,23 @@ export default {
 </div>
 <div>
     <h1>Korisnici</h1>
-    <tabela-korisnika v-bind:korisnici="korisnici" v-on:uklanjanjeK="remove" v-on:izmenaK="setZaIzmenu"></tabela-korisnika>
+    <tabela-korisnika v-bind:tipovi="tipovi" v-bind:korisnici="korisnici" v-on:uklanjanjeK="remove" v-on:izmenaK="setZaIzmenu"></tabela-korisnika>
 </div>
     `,
     data() {
         return {
             korisnici: [],
+            tipovi:[],
             ulogovan: false
             
         }
     },
     methods: {
+        refreshTip() {
+            axios.get("api/tip").then((response) => {
+                this.tipovi = response.data;
+            });
+        },
         refreshkorisnici() {
             axios.get("api/korisnici").then((response) => {
                 this.korisnici = response.data;
@@ -34,5 +40,6 @@ export default {
     },
     created() {
         this.refreshkorisnici();
+        this.refreshTip();
     }
 }

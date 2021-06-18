@@ -10,10 +10,17 @@ export default {
     data() {
         return {
             proizvodi: [],
-            ulogovan:false
+            ulogovan:false,
+            korisnik: {},
+            
         }
     },
     methods: {
+        refresh() {
+            axios.get(`api/korisnici/${this.$route.params['id']}`).then((response) => {
+                this.korisnik = response.data;
+            });
+        },
         refreshProizvodi() {
             axios.get("api/proizvodi").then((response) => {
                 this.proizvodi = response.data;
